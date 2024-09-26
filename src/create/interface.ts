@@ -21,7 +21,7 @@ export enum AppletEnabledScope {
   browser = 'browser',
 }
 
-export interface AppletConfig<T = unknown, U = unknown> {
+export interface AppletConfig<T = unknown> {
   key: string
   scope?: AppletEnabledScope
   name: string

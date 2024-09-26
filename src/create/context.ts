@@ -1,12 +1,14 @@
 import type { BaseContext } from './createContext';
-import { ExtensionAvailableKey, AppletsEnablingContext } from './configs';
+import type { AppletsEnablingContext } from './configs';
+import { ExtensionAvailableKey } from './configs';
+
 export class ContextStorage {
   contextMap: Record<string, BaseContext<unknown>> = {};
   constructor() {
     this.contextMap = {};
   }
 
-  getContext<T extends any>(key: string) {
+  getContext<T>(key: string) {
     const target = this.contextMap[key];
     // if (!target) {
     //   console.error('Maybe you forget to init this context?');
@@ -17,7 +19,6 @@ export class ContextStorage {
   getAppletsEnablingContext() {
     return this.getContext<typeof AppletsEnablingContext['default']>(ExtensionAvailableKey);
   }
-
 
   setContext(context: BaseContext<unknown>) {
     this.contextMap[context.key] = context;
