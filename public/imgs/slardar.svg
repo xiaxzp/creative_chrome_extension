@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240px" height="240px" viewBox="0 0 240 240" version="1.1">
+  <title>logo</title>
+  <desc>Created with Sketch.</desc>
+  <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="画板" transform="translate(-188.000000, -314.000000)">
+      <g id="logo" transform="translate(188.000000, 314.000000)">
+        <path d="M97.378,84.256 C108.672,75.918 119.36,66.806 129.365,57 M67.527,137.702 C95.779,123.484 121.707,105.326 144.59,83.95 M51,177.925 C91.255,162.105 127.97,139.241 159.63,110.852 M112.484,181.659 C134.66,168.996 155.473,154.219 174.649,137.603 M167.7,181.507 C175.317,175.914 182.739,170.07 189.953,163.987" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+
+</svg>
