@@ -65,10 +65,14 @@ export function setStorageFromContext<T extends Record<string, any>>(extensionKe
 }
 
 export function dealModules<T>(modules: Record<string, { [key: string]: any }>) {
-  return Object.fromEntries(Object.keys(modules).map(path => [PackageNameToConfig[getPathKey(path)]?.key ?? getPathKey(path), modules[path].default as T]));
+  return Object.fromEntries(
+    Object.keys(modules).map(
+      path => [PackageNameToConfig[getPathKey(path)]?.key ?? getPathKey(path), modules[path].default as T],
+    ),
+  );
 }
 
-export type InitExtensionRun = (key: string) => UnMounted;
+export type InitExtensionRun = (key: string) => Promise<UnMounted>;
 
 export function initExtension(run: InitExtensionRun) {
   const unMountedList: Record<string, UnMounted> = {};
@@ -78,9 +82,9 @@ export function initExtension(run: InitExtensionRun) {
   contextStorage.setContext(extensionAvailableContext);
 
   const unbind = extensionAvailableContext.autoRun((context) => {
-    Object.keys(context).forEach((key) => {
+    Object.keys(context).forEach(async (key) => {
       if (context[key].enabled && !beforeContext[key]?.enabled && configObj[key]) {
-        unMountedList[key] = run(key);
+        unMountedList[key] = await run(key);
       }
       if (!context[key].enabled && beforeContext[key]?.enabled && unMountedList[key]) {
         const unmount = unMountedList[key];

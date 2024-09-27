@@ -9,7 +9,6 @@
 // export * from './create';
 
 export {
-  type HooksUnMounted,
   type ObjectContext,
   type ContextType,
   AppletEnabledScope,

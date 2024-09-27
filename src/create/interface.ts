@@ -1,5 +1,4 @@
-export type UnMounted = (() => void) | void | Promise<(() => void) | void>
-export type HooksUnMounted = () => void
+export type UnMounted = (() => void) | void
 export type ObjectContext<T> = {
   storage?: boolean
   value: T

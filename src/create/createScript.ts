@@ -22,10 +22,10 @@ export enum CreateType {
 }
 
 export function create(type: CreateType) {
-  return <T = any>(run: (context?: BaseContext<T>) => UnMounted) => {
+  return <T = any> (run: (context?: BaseContext<T>) => Promise<UnMounted>) => {
     return async (config: AppletConfig<T>) => {
       if (!config.context) {
-        return run();
+        return await run();
       }
 
       const context = createContext<T>({
@@ -58,7 +58,7 @@ export function create(type: CreateType) {
       // };
 
       // const startIdx = watchQueueIdx;
-      const unMounted = run(context);
+      const unMounted = await run(context);
       // const endIdx = watchQueueIdx;
       // const queue = watchQueue.popQueue() as WatchQueueItem<T>[];
       // const watchUnMounted: (HooksUnMounted | void)[] = [];
@@ -75,8 +75,8 @@ export function create(type: CreateType) {
       //   watchUnMounted.push(unbind.bind(context));
       // });
 
-      return async () => {
-        (await unMounted)?.();
+      return () => {
+        (unMounted)?.();
         // watchUnMounted.forEach(item => item && item());
         contextStorage.removeContext(context.key);
         context.removeContext();

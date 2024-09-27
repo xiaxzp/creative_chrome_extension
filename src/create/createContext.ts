@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash-es';
 import { Subject } from 'rxjs';
-import type { HooksUnMounted } from './interface';
+import type { UnMounted } from './interface';
 import { getEventContextKey } from './const';
 // import { MATCH_URLS } from '~/const'
 
@@ -40,7 +40,7 @@ type Message<T> = (
   target: MessageSource[]
 }
 
-type AutoRunFunc<T> = (context: T) => (HooksUnMounted) | undefined | void
+type AutoRunFunc<T> = (context: T) => UnMounted | undefined
 type NewContextFunc<T> = (context: T) => Partial<T>
 // type AutoRunQueueItem<T> = {
 //   func: AutoRunFunc<T>,
@@ -56,7 +56,7 @@ export interface ContextRunParams<T> {
   emitEvent: EmitEvent
 }
 
-export type WatchRun<T> = (params: ContextRunParams<T>) => HooksUnMounted | undefined | void
+export type WatchRun<T> = (params: ContextRunParams<T>) => UnMounted | undefined
 
 function isNewContextFunc<T>(context): context is NewContextFunc<T> {
   return typeof context === 'function';
@@ -73,7 +73,7 @@ export abstract class BaseContext<T> {
   // autoRunQueue: AutoRunQueueItem<T>[] = [];
   watchUnMounted: ({
     func: AutoRunFunc<T>
-    unbind: HooksUnMounted | void
+    unbind: UnMounted
   })[] = [];
 
   matches: string[] = [];
@@ -113,7 +113,7 @@ export abstract class BaseContext<T> {
     return true;
   }
 
-  protected setUnmount(func: AutoRunFunc<T>, unbind: HooksUnMounted | void) {
+  protected setUnmount(func: AutoRunFunc<T>, unbind: UnMounted) {
     const existTar = this.watchUnMounted.find(item => item.func === func);
     if (existTar) {
       existTar.unbind = unbind;
@@ -135,7 +135,7 @@ export abstract class BaseContext<T> {
   }
 
   autoRun(func: AutoRunFunc<T>, dependence?: (keyof T)[], immediate?: boolean) {
-    let endFunc: (HooksUnMounted) | undefined | void;
+    let endFunc: (UnMounted) | undefined;
     if (immediate) {
       endFunc = func(this.context);
     }
@@ -186,7 +186,7 @@ export abstract class BaseContext<T> {
     // this.watchUnMounted.push(unbind.bind(this));
   }
 
-  on<U>(event: string, run: (payload: U, context: ContextRunParams<T>) => (HooksUnMounted | void)) {
+  on<U>(event: string, run: (payload: U, context: ContextRunParams<T>) => (UnMounted)) {
     const eventContextKey = getEventContextKey(event);
     const onRun = (params: ContextRunParams<T>) => {
       const { context, setContext } = params;
@@ -282,6 +282,7 @@ class BackgroundContext<T> extends BaseContext<T> {
       }
       tabs.forEach((tab) => {
         console.log('send to tab', tab.id);
+        // eslint-disable-next-line ts/no-unused-expressions
         tab.id
         && chrome.tabs.sendMessage(tab.id, {
           ...message,
@@ -627,7 +628,7 @@ export function createContext<T>(context: Context<T>, matches: string[] = []) {
     }
     return createInjectContext(context, matches);
   }
-  catch (e) {
+  catch {
     return createBackgroundContext(context, matches);
   }
 }

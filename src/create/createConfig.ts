@@ -1,4 +1,4 @@
-import type { AppletConfig } from './interface'
+import type { AppletConfig } from './interface';
 import { AppletEnabledScope } from './interface';
 
 export function createConfig<T>(config: AppletConfig<T>): AppletConfig<T> {

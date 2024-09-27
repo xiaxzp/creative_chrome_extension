@@ -12,10 +12,11 @@ export default function useInitExtension() {
     res[item.key] = { value: null, set: () => {} };
     return res;
   }, {}));
-  const { unbind, context } = initExtension((key) => {
+
+  const { unbind, context } = initExtension(async (key) => {
     let unmount: UnMounted | undefined;
     if (!contextStorage.getContext(key)) {
-      unmount = createData(() => {})(configObj[key]);
+      unmount = await createData(async () => {})(configObj[key]);
     }
     const context = contextStorage.getContext(key);
     if (context) {
@@ -37,7 +38,6 @@ export default function useInitExtension() {
       return unmount || unbind.bind(context);
     }
   });
-
   const extensionsAvailable = ref(context.context);
 
   context.autoRun((value) => {

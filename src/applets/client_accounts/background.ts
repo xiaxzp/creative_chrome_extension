@@ -12,7 +12,7 @@ import {
 } from './utils';
 import { createBackground } from '~/create/createScript';
 
-export default createBackground<Context>((context) => {
+export default createBackground<Context>(async (context) => {
   context?.watch(
     ({ setContext }) => {
       getAccountList().then((accountList) => {

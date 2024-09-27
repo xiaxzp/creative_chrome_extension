@@ -3,7 +3,7 @@ import { getLoginInfoKey } from './utils';
 import { createInject } from '~/create/createScript';
 import { contextStorage } from '~/create/context';
 
-export default createInject<Context>((context) => {
+export default createInject<Context>(async (context) => {
   context?.watch(({ context, setContext }) => {
     const { account, password } = context[getLoginInfoKey()];
     alert(`Inject: Select account: ${account}, password: ${password}`);

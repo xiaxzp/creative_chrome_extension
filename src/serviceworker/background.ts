@@ -15,12 +15,12 @@ console.log('=>(background.ts:13) backgroundObj', backgroundObj);
 const EXTENSION_AVAILABLE_STORAGE_KEY = 'extension_available_storage_key';
 
 // 自动运行background
-function run(key: string) {
+async function run(key: string) {
   if (backgroundObj[key]) {
     return backgroundObj[key](configObj[key]);
   }
-  const func = createBackground(() => () => {});
-  return func(configObj[key]);
+  const func = createBackground(async () => () => {});
+  return await func(configObj[key]);
 }
 
 const { context } = initExtension(run);

@@ -21,7 +21,7 @@ const loadingPromise = new Promise((resolve) => {
 /**
  * === Load And Run Content JS ===
  */
-const { unbind } = initExtension(() => {
+const { unbind } = initExtension(async () => {
   // 如果以后每个 applet 有导出的需要懒启动的函数，可以在此启动
 });
 
