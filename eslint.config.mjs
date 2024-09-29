@@ -17,6 +17,7 @@ export default antfu({
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [
     '**/dist/**',
+    '**/docs/**',
     '**/dist-user/**',
     '**/node_modules/**',
     '**/public/**',

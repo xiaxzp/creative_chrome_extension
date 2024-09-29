@@ -4,6 +4,7 @@
 
 - You can find `src/extensions/demo` in our project!
 - new module should be placed under `src/applets/`
+- read core apis in [docs/create](./create/index.md)
 
 ## config
 ```

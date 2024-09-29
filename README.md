@@ -1,10 +1,11 @@
 # Creative FE Devtools in the form of Chrome extension
 
-- A [vitesse-webext](https://github.com/antfu/vitesse-webext/) powered WebExtension.
+- [Core Logic](./docs/intro.md)
 
 ## Develop
 
 ```bash
+pnpm install
 pnpm dev
 ```
 

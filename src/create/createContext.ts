@@ -6,7 +6,7 @@ import { getEventContextKey } from './const';
 
 declare const self: ServiceWorkerGlobalScope;
 
-export interface Context<T> {
+export interface WrappedContext<T> {
   key: string
   default: T
 }
@@ -78,7 +78,7 @@ export abstract class BaseContext<T> {
 
   matches: string[] = [];
 
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     this.key = context.key;
     this.context = context.default;
     this.queue = new Subject();
@@ -212,7 +212,7 @@ export abstract class BaseContext<T> {
  * background - inject 不能直接通信
  */
 class BackgroundContext<T> extends BaseContext<T> {
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     super(context, matches);
     chrome.runtime.onMessage.addListener(this._chromeMessageListener);
     self.addEventListener('message', this._serviceWorkerMessageListener);
@@ -314,7 +314,7 @@ class BackgroundContext<T> extends BaseContext<T> {
  * content - inject 通信使用 service worker
  */
 class ContentContext<T> extends BaseContext<T> {
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     super(context, matches);
     this._initContext();
     chrome.runtime.onMessage.addListener(this._chromeMessageListener);
@@ -411,7 +411,7 @@ class ContentContext<T> extends BaseContext<T> {
  * ---------set成功后，转化为change  background -> content -> inject
  */
 class InjectContext<T> extends BaseContext<T> {
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     super(context, matches);
     this._initContext();
     addEventListener('message', this._serviceWorkerMessageListener);
@@ -468,7 +468,7 @@ class InjectContext<T> extends BaseContext<T> {
  * popup - background 通信使用 service worker
  */
 class PopupContext<T> extends BaseContext<T> {
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     super(context, matches);
     this._initContext();
     navigator.serviceWorker.addEventListener('message', this._serviceWorkerMessageListener);
@@ -530,7 +530,7 @@ class PopupContext<T> extends BaseContext<T> {
  * option - background 通信使用 service worker
  */
 class OptionContext<T> extends BaseContext<T> {
-  constructor(context: Context<T>, matches: string[] = []) {
+  constructor(context: WrappedContext<T>, matches: string[] = []) {
     super(context, matches);
     this._initContext();
     navigator.serviceWorker.addEventListener('message', this._serviceWorkerMessageListener);
@@ -588,27 +588,27 @@ class OptionContext<T> extends BaseContext<T> {
   }
 }
 
-export function createContentContext<T>(context: Context<T>, matches: string[]) {
+export function createContentContext<T>(context: WrappedContext<T>, matches: string[]) {
   return new ContentContext<T>(context, matches);
 }
 
-export function createBackgroundContext<T>(context: Context<T>, matches: string[]) {
+export function createBackgroundContext<T>(context: WrappedContext<T>, matches: string[]) {
   return new BackgroundContext<T>(context, matches);
 }
 
-export function createInjectContext<T>(context: Context<T>, matches: string[]) {
+export function createInjectContext<T>(context: WrappedContext<T>, matches: string[]) {
   return new InjectContext<T>(context, matches);
 }
 
-export function createPopupContext<T>(context: Context<T>, matches: string[]) {
+export function createPopupContext<T>(context: WrappedContext<T>, matches: string[]) {
   return new PopupContext<T>(context, matches);
 }
 
-export function createOptionContext<T>(context: Context<T>, matches: string[]) {
+export function createOptionContext<T>(context: WrappedContext<T>, matches: string[]) {
   return new OptionContext<T>(context, matches);
 }
 
-export function createContext<T>(context: Context<T>, matches: string[] = []) {
+export function createContext<T>(context: WrappedContext<T>, matches: string[] = []) {
   try {
     const { location } = window;
     if (

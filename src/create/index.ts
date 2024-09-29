@@ -33,7 +33,7 @@ export {
   contextStorage,
 } from './context';
 export {
-  type Context,
+  type WrappedContext,
   type SetContext,
   type EmitEvent,
   type ContextRunParams,

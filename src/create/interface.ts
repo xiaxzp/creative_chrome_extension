@@ -25,7 +25,7 @@ export interface AppletConfig<T = unknown> {
   scope?: AppletEnabledScope
   name: string
   icon?: string
-  enabled?: boolean /** 是不是暂时没用了？ */
+  enabled?: boolean
   hideInControlsCenter?: boolean
   context?: T extends Record<string, any> ? ContextType<T> : undefined
   // Like the manifest matches rule, only under configured patterns will activate
