@@ -6,27 +6,29 @@
 - new module should be placed under `src/applets/`
 - read core apis in [docs/create](./create/index.md)
 
-## config
+## Core initialize logic
+
+### config
 ```
 import { createConfig } from '~/create';
 
 export default createConfig<Context>({
-  key: 'demo', // 应该与 module key 相同
+  key: 'demo', // module key
   name: 'Demo', // module name
-  hideInControlsCenter: true, // 是否需要在控制面板隐藏
-  matches: ['https://tcm-boe.byted.org/*'], // 模块激活条件
-  context: { // 临时状态机
+  hideInControlsCenter: true, // whether hide in Control Panel
+  matches: ['https://tcm-boe.byted.org/*'], // active condition
+  context: { // temporarily used
     data1: false,
     data2: 1,
     data3: {
-      storage: true, // 是否与 chrome storage 交互
-      value: [], // 实际存储的 data, required!
+      storage: true, // whether stored in chrome storage
+      value: [], // runtime data, required!
     },
   },
 });
 ```
 
-## background
+### background
 ```
 import { Context } from './config';
 import { createBackground } from '~/create';
@@ -41,7 +43,7 @@ export default createBackground<Context>(() => {
 
 ```
 
-## content
+### content
 ```
 <template>
   <div @click="onClick">
@@ -53,25 +55,25 @@ export default createBackground<Context>(() => {
 import { Context } from './config';
 
 const props = defineProps<{
-  context: Context, // AppletList 自动给到对应 contextMap[item.key].value
+  context: Context, // AppletList automatically receive contextMap[item.key].value
 }>();
 
 const emit = defineEmits(['set-context', 'emit-event']);
 
 const onClick = () => {
-  emit('set-context', { // 对应 contextMap[item.key].set
+  emit('set-context', { // corresponding contextMap[item.key].set
     data2: props.context.data2 + 1,
   });
 
-  emit('emit-event', 'show-on', '1234'); // 对应 contextMap[item.key].emit ，事件应该在 initBackground 时通过 useOn 定义
+  emit('emit-event', 'show-on', '1234'); // corresponding contextMap[item.key].emit, should be defined with context.on when init Background
 };
 
 </script>
 
 ```
 
-## Options
-与 content 基本相同
+### Options
+same as content
 ```
 <template>
   <div @click="onClick">
@@ -98,12 +100,12 @@ const onClick = () => {
 
 ```
 
-## inject
+### inject
 ```
 import { createInject, useWatch, useOn } from '~/create';
 import { Context } from './config';
 
-export default createInject<Context>((context) => { // 相对独立，重新注册
+export default createInject<Context>((context) => {
   console.log('inject mounted demo');
   contex.watch(({ context }) => {
     console.log('data1 data2 change', context);
