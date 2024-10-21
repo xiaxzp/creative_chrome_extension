@@ -1,13 +1,16 @@
-import { initExtension } from '~/create/create';
+import { dealModules, initExtension } from '~/create/create';
+import type { Run } from '~/create/createScript';
 import { configObj } from '~/create/configs';
-import injectClientAccountScripts from '~/applets/client_accounts/inject';
-import { CLIENT_ACCOUNTS_APPLET_KEY } from '~/applets/client_accounts/config';
 
-const injectObj = {
-  [CLIENT_ACCOUNTS_APPLET_KEY]: injectClientAccountScripts,
-};
+const allBackgroundFiles = require.context('../applets', true, /background\.ts$/);
 
-initExtension((key) => {
+const modules = allBackgroundFiles.keys().reduce((acc, key) => {
+  acc[key] = allBackgroundFiles(key);
+  return acc;
+}, {});
+const injectObj = dealModules<Run>(modules);
+
+initExtension(async (key) => {
   if (injectObj[key]) {
     return injectObj[key](configObj[key]);
   }

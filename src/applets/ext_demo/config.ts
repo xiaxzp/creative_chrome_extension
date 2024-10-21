@@ -7,11 +7,11 @@ export type Context = {
   loginInfo: LoginInfo
 };
 
-export const CLIENT_ACCOUNTS_APPLET_KEY = 'client_accounts';
+export const CLIENT_ACCOUNTS_APPLET_KEY = 'ext_demo';
 
 export default createConfig<Context>({
   key: CLIENT_ACCOUNTS_APPLET_KEY,
-  name: 'Available Accounts',
+  name: 'Demo about accounts',
   icon: 'imgs/switch-account-icon.svg',
   matches: ACCOUNT_EXTENSION_MATCH_URLS,
   context: {

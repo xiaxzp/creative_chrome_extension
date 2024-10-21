@@ -128,7 +128,7 @@ import AccountCardForm from './AccountCardForm.vue';
 import { useAppletEnabled } from '~/hooks/appletEnablings';
 import config, {
   CLIENT_ACCOUNTS_APPLET_KEY,
-} from '~/applets/client_accounts/config';
+} from '~/applets/ext_demo/config';
 import { useTracker } from '~/hooks/tracker';
 
 const props = defineProps<{
