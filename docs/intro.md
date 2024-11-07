@@ -2,6 +2,8 @@
 
 # Demo & How to start
 
+- We call every module as an applet
+- Some of the applets' toggles are maintained in control center
 - You can find `src/applets/ext_demo` in our project!
 - new module should be placed under `src/applets/`
 - copy `ext_demo` for a new trial!

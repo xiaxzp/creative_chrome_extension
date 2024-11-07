@@ -16,6 +16,7 @@ function getTabContentKey(key, tabId) {
   return `__${key}${tabId}__`;
 }
 
+// not using webext-bridge, but it's a good tool.
 export function listenerContentMessage() {
   onMessage(TabBackgroundMessageType, ({ sender, data }) => {
     const contentKey = getTabContentKey(data.key, sender.tabId);
