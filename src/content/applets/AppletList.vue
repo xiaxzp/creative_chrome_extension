@@ -57,14 +57,8 @@ function onAppletShutdown(conf: AppletConfig) {
 }
 
 const context = require.context('../../applets', true, /Content\.vue$/);
-
-const modules = context.keys().reduce((acc, key) => {
-  acc[key] = context(key);
-  return acc;
-}, {});
-
 const componentsMap = dealModules(
-  modules,
+  context,
 );
 console.log('=>(AppletList.vue:68) componentsMap', componentsMap);
 

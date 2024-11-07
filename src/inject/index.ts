@@ -2,13 +2,9 @@ import { dealModules, initExtension } from '~/create/create';
 import type { Run } from '~/create/createScript';
 import { configObj } from '~/create/configs';
 
-const allBackgroundFiles = require.context('../applets', true, /background\.ts$/);
+const injectFiles = require.context('../applets', true, /inject\.ts$/);
 
-const modules = allBackgroundFiles.keys().reduce((acc, key) => {
-  acc[key] = allBackgroundFiles(key);
-  return acc;
-}, {});
-const injectObj = dealModules<Run>(modules);
+const injectObj = dealModules<Run>(injectFiles);
 
 initExtension(async (key) => {
   if (injectObj[key]) {

@@ -64,7 +64,12 @@ export function setStorageFromContext<T extends Record<string, any>>(extensionKe
   return chrome.storage.local.set(storageData);
 }
 
-export function dealModules<T>(modules: Record<string, { [key: string]: any }>) {
+// get key: config by using require.context
+export function dealModules<T>(requireContexts: __WebpackModuleApi.RequireContext) {
+  const modules = requireContexts.keys().reduce((acc, key) => {
+    acc[key] = requireContexts(key);
+    return acc;
+  }, {});
   return Object.fromEntries(
     Object.keys(modules).map(
       path => [PackageNameToConfig[getPathKey(path)]?.key ?? getPathKey(path), modules[path].default as T],

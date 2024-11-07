@@ -4,12 +4,7 @@ import { dealModules, initExtension } from '~/create/create';
 
 const allBackgroundFiles = require.context('../applets', true, /background\.ts$/);
 
-const modules = allBackgroundFiles.keys().reduce((acc, key) => {
-  acc[key] = allBackgroundFiles(key);
-  return acc;
-}, {});
-
-const backgroundObj = dealModules<Run>(modules);
+const backgroundObj = dealModules<Run>(allBackgroundFiles);
 console.log('=>(background.ts:13) backgroundObj', backgroundObj);
 
 const EXTENSION_AVAILABLE_STORAGE_KEY = 'extension_available_storage_key';

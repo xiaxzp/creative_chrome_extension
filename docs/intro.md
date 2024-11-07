@@ -1,9 +1,11 @@
 # TTCM Extension Docs
 
-# Demo
+# Demo & How to start
 
-- You can find `src/extensions/demo` in our project!
+- You can find `src/applets/ext_demo` in our project!
 - new module should be placed under `src/applets/`
+- copy ext_demo for a new start!
+
 - read core apis in [docs/create](./create/index.md)
 
 ## Core initialize logic

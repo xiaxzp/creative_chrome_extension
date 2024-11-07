@@ -47,13 +47,8 @@ onMounted(() => {
 
 const context = require.context('../../applets', true, /Devtools\.vue$/);
 
-const modules = context.keys().reduce((acc, key) => {
-  acc[key] = context(key);
-  return acc;
-}, {});
-
 const componentsMap = dealModules(
-  modules,
+  context,
 );
 
 let availableComponents = $ref<any>([]);

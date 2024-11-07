@@ -12,6 +12,7 @@ import {
 } from './utils';
 import { createBackground } from '~/create/createScript';
 
+// init background by using createBackground
 export default createBackground<Context>(async (context) => {
   context?.watch(
     ({ setContext }) => {

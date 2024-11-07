@@ -21,18 +21,22 @@ export enum AppletEnabledScope {
 }
 
 export interface AppletConfig<T = unknown> {
-  key: string
-  scope?: AppletEnabledScope
-  name: string
-  icon?: string
-  enabled?: boolean
-  hideInControlsCenter?: boolean
-  context?: T extends Record<string, any> ? ContextType<T> : undefined
-  // Like the manifest matches rule, only under configured patterns will activate
-  matches: string[]
+  key: string // unique key
+  name: string // display name
+  enabled?: boolean // default enable
+  hideInControlsCenter?: boolean // hide in controls center
+  context?: T extends Record<string, any> ? ContextType<T> : undefined // main values
 
-  devtools?: boolean
-  hideInDevtools?: boolean | ((url: string) => Promise<boolean> | boolean)
+  // env
+  matches: string[] // Like the manifest matches rule, only under configured patterns will activate
+  scope?: AppletEnabledScope // used in applet panel to decide the scope of the applet card panel when toggled
+  // devtool
+  devtools?: boolean // use this applet in dev tool
+  hideInDevtools?: boolean | ((url: string) => Promise<boolean> | boolean) // hide this applet in dev tool
 
-  alwaysShowOptions?: boolean
+  // option page
+  alwaysShowOptions?: boolean // show this applet's option page
+
+  // control center
+  icon?: string // icon path used in applet card panel and controls center, ext: 'imgs/switch-account-icon.svg',
 }

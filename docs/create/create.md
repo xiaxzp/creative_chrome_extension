@@ -7,7 +7,7 @@ Bundles of functions for creating modules.
 
 - Type: `Function`
 - Params: `globEager`
-[`globEager`](https://cn.vitejs.dev/guide/features.html#glob-import) get all the matched config file `{ path: module }`
+[`globEager`](https://cn.vitejs.dev/guide/features.html#glob-import) get all the matched config file by useing require.context
 - Return: `Record<config.key, modules[path].default as T>`
 
 by using `getPathKey` and `PackageNameToConfig`, the function get the module's config.key，and generate a structure in `{ [config.key]: module }` format.

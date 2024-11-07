@@ -64,13 +64,8 @@ const { contextMap } = useInitExtension();
 
 const context = require.context('../applets', true, /Options\.vue$/);
 
-const modules = context.keys().reduce((acc, key) => {
-  acc[key] = context(key);
-  return acc;
-}, {});
-
 const componentsMap = dealModules(
-  modules,
+  context,
 );
 
 const extensionRoutes = computed(() =>
