@@ -6,9 +6,9 @@
 - new module should be placed under `src/applets/`
 - copy `ext_demo` for a new trial!
 
-- read core apis in [docs/create](./create/index.md)
 
 ## Core initialize logic
+read more about core apis in [docs/create](./create/index.md)
 
 ### config
 ```

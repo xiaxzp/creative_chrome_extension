@@ -1,11 +1,11 @@
 # Creative FE Devtools in the form of Chrome extension
 
-- [Core Logic](./docs/intro.md)
+- [How to start](./docs/intro.md)
+- pnpm install
+- develop this extension in Chrome: using dev mode and load dist folder
 
 ## Develop
-
 ```bash
-pnpm install
 pnpm dev
 ```
 
