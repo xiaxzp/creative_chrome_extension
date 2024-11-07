@@ -53,6 +53,15 @@ import { accountStore } from './shared';
 import { EventKey } from './typings';
 import { useAppletEnabled } from '~/hooks/appletEnablings';
 
+/*
+:context="contextMap[item.key].value"   // context value
+:content="contentMap[item.key]?.value"  // runtime content value
+:shrinked="slotProps.shrinked"
+@set-context="contextMap[item.key].set" // set context
+@set-content="contentMap[item.key]?.set ?? (() => {})" // set content
+@emit-event="contextMap[item.key].emit" // emit event to parent
+*/
+
 const props = defineProps<{
   context: Context
 }>();

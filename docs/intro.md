@@ -4,7 +4,7 @@
 
 - You can find `src/applets/ext_demo` in our project!
 - new module should be placed under `src/applets/`
-- copy ext_demo for a new start!
+- copy `ext_demo` for a new trial!
 
 - read core apis in [docs/create](./create/index.md)
 

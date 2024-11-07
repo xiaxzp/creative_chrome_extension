@@ -14,6 +14,7 @@ import { createBackground } from '~/create/createScript';
 
 // init background by using createBackground
 export default createBackground<Context>(async (context) => {
+  // watch context change
   context?.watch(
     ({ setContext }) => {
       getAccountList().then((accountList) => {
@@ -26,6 +27,7 @@ export default createBackground<Context>(async (context) => {
     true,
   );
 
+  // trigger event
   context?.on<AccountInfo>(
     EventKey.updateAccount,
     (accountInfo, { context, setContext }) => {
