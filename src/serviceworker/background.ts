@@ -1,5 +1,5 @@
 import { type Run, createBackground } from '~/create/createScript';
-import { configObj } from '~/create/configs';
+import { ALL_APPLET_CONFIGS, configObj } from '~/create/configs';
 import { dealModules, initExtension } from '~/create/create';
 
 const allBackgroundFiles = require.context('../applets', true, /background\.ts$/);
@@ -20,12 +20,22 @@ async function run(key: string) {
 
 const { context } = initExtension(run);
 
+context.autoRun((context) => {
+  chrome.storage.local.set({ [EXTENSION_AVAILABLE_STORAGE_KEY]: context });
+});
 chrome.storage.local.get(EXTENSION_AVAILABLE_STORAGE_KEY, (res) => {
   if (res[EXTENSION_AVAILABLE_STORAGE_KEY]) {
     context.setContext(() => res[EXTENSION_AVAILABLE_STORAGE_KEY]);
   }
-});
-
-context.autoRun((context) => {
-  chrome.storage.local.set({ [EXTENSION_AVAILABLE_STORAGE_KEY]: context });
+  else {
+    const newContext = ALL_APPLET_CONFIGS.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item.key]: {
+          enabled: item.enabled ?? false,
+        },
+      };
+    }, {});
+    context.setContext(() => newContext);
+  }
 });
