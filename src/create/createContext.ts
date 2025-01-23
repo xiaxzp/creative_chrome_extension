@@ -142,7 +142,7 @@ export abstract class BaseContext<T> {
     const sub = this.queue.subscribe((item) => {
       if (!dependence || dependence.some(dep => (item.changesMap as Partial<T>)[dep])) {
         endFunc?.();
-        endFunc = func(this.context);
+        endFunc = func(item.value);
         this.setUnmount(func, () => {
           endFunc?.();
           sub.unsubscribe();
@@ -192,9 +192,12 @@ export abstract class BaseContext<T> {
       const { context, setContext } = params;
       if (context[eventContextKey]) {
         run(context[eventContextKey].payload, params);
-        setContext({
-          [eventContextKey]: null,
-        } as unknown as Partial<T>);
+        // 环境发送消息为异步
+        setTimeout(() => {
+          setContext({
+            [eventContextKey]: null,
+          } as unknown as Partial<T>);
+        }, 0);
       }
     };
     return this.watch(onRun, [eventContextKey as keyof T], true);
