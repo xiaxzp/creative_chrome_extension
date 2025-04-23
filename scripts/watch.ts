@@ -1,6 +1,6 @@
 import WebSocket, { WebSocketServer } from 'ws';
-
-export default function rollupWatchReloadPlugin() {
+import { OutputOptions } from 'rollup';
+export default function rollupWatchReloadPlugin(options?: Record<string, any>) {
   const wsInstance = new WebSocketServer({ port: 9999 });
   wsInstance.on('connection', (ws) => {
     ws.on('message', (data) => {
@@ -12,7 +12,7 @@ export default function rollupWatchReloadPlugin() {
   });
   return {
     name: 'my-watch-reload-plugin', // this name will show up in warnings and errors
-    async writeBundle() {
+    async writeBundle(options: OutputOptions, bundle: any) {
       console.log('bundle end');
       console.log('wss send');
       wsInstance.clients.forEach((client) => {

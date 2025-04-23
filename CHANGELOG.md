@@ -1,7 +1,0 @@
-# Changelog
-
-
-### Features
-
-
-### Bug Fixes

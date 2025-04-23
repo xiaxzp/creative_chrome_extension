@@ -1,0 +1,11 @@
+.the-panel {
+  @apply top-20px left-20px absolute;
+
+  transform: translate3d(calc(-100% + 60px), calc(-100% - 20px));
+  pointer-events: none;
+
+  &.is-visible {
+    will-change: transform;
+    pointer-events: all;
+  }
+}

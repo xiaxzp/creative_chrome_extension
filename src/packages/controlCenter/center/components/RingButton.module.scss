@@ -1,0 +1,30 @@
+.ringBox {
+  @apply cursor-pointer;
+  position: absolute;
+
+  &:nth-of-type(1) {
+    filter: blur(5px);
+    transform: skew(350deg, 16deg) rotate(0);
+    animation: force-reverse-spin 3s linear infinite;
+    animation-play-state: paused;
+  }
+
+  &:nth-of-type(2) {
+    transform: skew(350deg, 16deg) scale(1.08);
+    mix-blend-mode: color;
+  }
+
+  &:nth-of-type(3) {
+    transform: skew(0, -5deg);
+  }
+
+  &:nth-of-type(4) {
+    transform: rotate(303deg) skew(347deg, 14deg) scale(1.01);
+  }
+}
+
+@keyframes force-reverse-spin {
+  100% {
+    transform: skew(350deg, 16deg) rotate(-720deg);
+  }
+}

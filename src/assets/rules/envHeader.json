@@ -1,0 +1,13 @@
+[
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        { "header": "user-agent", "operation": "set", "value": "BytedanceWebview/d8a21c6" }
+      ]
+    },
+    "condition": { "regexFilter": "(api|dev|www)\\.tiktok\\.com", "resourceTypes": ["xmlhttprequest"] }
+  }
+]

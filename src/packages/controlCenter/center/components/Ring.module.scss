@@ -1,0 +1,26 @@
+.theRing {
+  mask: radial-gradient(transparent 42%, #000 43%);
+  animation-name: spin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-play-state: paused;
+  -webkit-user-drag: none;
+
+  &.isReverse {
+    animation-direction: alternate;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes spin {
+  50% {
+    transform: rotate(360deg);
+  }
+  70% {
+    transform: rotate(480deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}

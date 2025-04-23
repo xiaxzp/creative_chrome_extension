@@ -1,0 +1,326 @@
+{
+  "plugins": ["react", "unicorn", "typescript", "oxc"],
+  "categories": {},
+
+  "rules": {
+    "radix": "off",
+    "require-await": ["off"],
+    "nodeo-array-constructor": ["off"],
+    "array-callback-return": ["error"],
+    "default-case-last": ["error"],
+    "func-names": ["off"],
+    "grouped-accessor-pairs": ["error", "getBeforeSet"],
+    "max-params": [
+      "error",
+      {
+        "max": 6
+      }
+    ],
+    "nodeo-alert": ["error"],
+    "nodeo-caller": ["error"],
+    "nodeo-eval": ["error"],
+    "nodeo-extend-native": ["error"],
+    "nodeo-lone-blocks": ["error"],
+    "nodeo-lonely-if": ["error"],
+    "nodeo-new-func": ["error"],
+    "nodeo-return-assign": ["error"],
+    "nodeo-throw-literal": ["off"],
+    "nodeo-unneeded-ternary": ["error"],
+    "nodeo-useless-call": ["error"],
+    "nodeo-useless-concat": ["error"],
+    "nodeo-useless-rename": ["error"],
+    "operator-assignment": ["warn"],
+    "prefer-object-spread": ["warn"],
+    "prefer-rest-params": ["error"],
+    "symbol-description": ["error"],
+    "unicorn/error-message": ["error"],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "kebabCase": true,
+          "camelCase": true,
+          "pascalCase": true
+        },
+        "ignore": [{}]
+      }
+    ],
+    "unicorn/no-abusive-eslint-disable": ["error"],
+    "unicorn/no-document-cookie": ["error"],
+    "unicorn/no-instanceof-array": ["error"],
+    "unicorn/no-invalid-remove-event-listener": ["error"],
+    "unicorn/no-thenable": ["error"],
+    "unicorn/no-useless-fallback-in-spread": ["warn"],
+    "unicorn/no-useless-length-check": ["warn"],
+    "unicorn/no-useless-promise-resolve-reject": ["warn"],
+    "unicorn/no-useless-spread": ["warn"],
+    "unicorn/no-useless-undefined": ["warn"],
+    "unicorn/prefer-array-flat": ["warn"],
+    "unicorn/prefer-array-flat-map": ["warn"],
+    "unicorn/prefer-array-some": ["warn"],
+    "unicorn/prefer-date-now": ["warn"],
+    "unicorn/prefer-dom-node-text-content": ["error"],
+    "unicorn/prefer-includes": ["warn"],
+    "unicorn/prefer-string-slice": ["warn"],
+    "unicorn/require-array-join-separator": ["warn"],
+    "unicorn/require-number-to-fixed-digits-argument": ["warn"],
+    "unicorn/require-post-message-target-origin": ["error"],
+    "unicorn/throw-new-error": ["error"],
+    "import/no-cycle": ["warn"],
+    "import/first": ["warn"],
+    "nodeo-script-url": ["error"],
+    "nodeo-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "mobx",
+            "importNames": ["runInAction"],
+            "message": "Don't use runInAction"
+          }
+        ]
+      }
+    ],
+    "typescript/array-type": ["error"],
+    "typescript/consistent-indexed-object-style": ["warn"],
+    "typescript/no-explicit-any": ["warn"],
+    "typescript/no-extraneous-class": ["error"],
+    "typescript/no-non-null-asserted-nullish-coalescing": ["error"],
+    "typescript/no-var-requires": ["off"],
+    "typescript/prefer-enum-initializers": ["error"],
+    "typescript/prefer-function-type": ["error"],
+    "typescript/prefer-literal-enum-member": ["error"],
+    "typescript/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ],
+    "typescript/no-non-null-assertion": ["off"],
+    "react/no-array-index-key": ["warn"],
+    "react/self-closing-comp": ["warn"],
+    "react/jsx-boolean-value": ["error"],
+    "react/jsx-no-useless-fragment": ["warn"],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".tsx", ".jsx"]
+      }
+    ],
+    "max-lines-per-function": [
+      "off",
+      {
+        "max": 120
+      }
+    ],
+    "nodeo-dupe-class-members": ["error"],
+    "nodeo-duplicate-imports": ["off"],
+    "nodeo-redeclare": [
+      "error",
+      {
+        "ignoreDeclarationMerge": true
+      }
+    ],
+    "nodeo-unused-vars": [
+      "warn",
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
+    "nodeo-useless-constructor": ["error"],
+    "import/namespace": ["off"],
+    "import/default": ["off"],
+    "import/no-named-as-default-member": ["off"],
+    "typescript/explicit-function-return-type": ["off"],
+    "typescript/triple-slash-reference": ["off"],
+    "typescript/adjacent-overload-signatures": ["error"],
+    "typescript/ban-types": [
+      "error",
+      {
+        "types": {
+          "String": {
+            "message": "Use string instead",
+            "fixWith": "string"
+          },
+          "Number": {
+            "message": "Use number instead",
+            "fixWith": "number"
+          },
+          "Boolean": {
+            "message": "Use boolean instead",
+            "fixWith": "boolean"
+          },
+          "Symbol": {
+            "message": "Use symbol instead",
+            "fixWith": "symbol"
+          },
+          "Function": {
+            "message": "Use explicit type instead"
+          },
+          "Object": {
+            "message": "Object type is disallowed"
+          },
+          "object": {
+            "message": "object type is disallowed"
+          },
+          "{}": {
+            "message": "{} type is disallowed"
+          },
+          "any": {
+            "message": "Use explicit type instead"
+          }
+        }
+      }
+    ],
+    "typescript/no-misused-new": ["error"],
+    "typescript/no-namespace": ["error"],
+    "typescript/no-non-null-asserted-optional-chain": ["error"],
+    "typescript/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": false,
+        "ts-ignore": true,
+        "ts-nocheck": true,
+        "ts-check": false
+      }
+    ],
+    "typescript/no-inferrable-types": ["warn"],
+    "typescript/prefer-for-of": ["warn"],
+    "import/no-dynamic-require": [0],
+    "import/no-webpack-loader-syntax": [1],
+    "import/no-named-as-default": [0],
+    "import/unambiguous": [0],
+    "import/no-amd": [0],
+    "import/no-duplicates": [2],
+    "import/no-namespace": [0],
+    "import/max-dependencies": [0],
+    "nodeo-console": [0],
+    "nodeo-constant-condition": [1],
+    "nodeo-debugger": [2],
+    "nodeo-dupe-keys": [2],
+    "nodeo-empty-character-class": [2],
+    "nodeo-ex-assign": [2],
+    "nodeo-extra-boolean-cast": [1],
+    "nodeo-func-assign": [1],
+    "nodeo-invalid-regexp": [2],
+    "nodeo-unsafe-negation": [2],
+    "nodeo-obj-calls": [2],
+    "nodeo-sparse-arrays": [2],
+    "use-isnan": [2],
+    "valid-typeof": [2],
+    "guard-for-in": [1],
+    "nodeo-labels": [
+      1,
+      {
+        "allowLoop": true,
+        "allowSwitch": false
+      }
+    ],
+    "nodeo-irregular-whitespace": [1],
+    "nodeo-global-assign": [2],
+    "nodeo-new-wrappers": [2],
+    "nodeo-proto": [2],
+    "nodeo-self-compare": [2],
+    "nodeo-with": [2],
+    "nodeo-delete-var": [1],
+    "nodeo-duplicate-case": [2],
+    "nodeo-label-var": [1],
+    "nodeo-shadow-restricted-names": [2],
+    "nodeo-class-assign": [2],
+    "nodeo-const-assign": [2],
+    "nodeo-this-before-super": [2],
+    "curly": ["error"],
+    "nodeo-var": [2],
+    "nodeo-multi-assign": [2],
+    "eqeqeq": ["error", "always"],
+    "nodeo-nested-ternary": [1],
+    "max-depth": [1, 3],
+    "default-case": [
+      "error",
+      {
+        "commentPattern": "^skip\\sdefault"
+      }
+    ],
+    "nodeo-multi-str": [2],
+    "nodeo-prototype-builtins": ["error"],
+    "prefer-promise-reject-errors": [
+      "error",
+      {
+        "allowEmptyReject": true
+      }
+    ],
+    "max-nested-callbacks": ["warn", 3],
+    "react/button-has-type": ["off"],
+    "react/no-children-prop": ["error"],
+    "react/no-danger": ["warn"],
+    "react/no-danger-with-children": ["error"],
+    "react/no-direct-mutation-state": ["error"],
+    "react/no-find-dom-node": ["error"],
+    "react/no-is-mounted": ["error"],
+    "react/no-render-return-value": ["error"],
+    "react/no-set-state": ["off"],
+    "react/no-string-refs": ["error"],
+    "react/no-unescaped-entities": ["error"],
+    "react/no-unknown-property": ["error"],
+    "react/prefer-es6-class": ["error", "always"],
+    "react/react-in-jsx-scope": ["off"],
+    "react/style-prop-object": ["error"],
+    "react/void-dom-elements-no-children": ["error"],
+    "react/jsx-key": ["error"],
+    "react/jsx-no-comment-textnodes": ["error"],
+    "react/jsx-no-duplicate-props": [
+      "error",
+      {
+        "ignoreCase": true
+      }
+    ],
+    "react/jsx-no-target-blank": ["off"],
+    "react/jsx-no-undef": ["error"],
+    "react-hooks/rules-of-hooks": ["error"],
+    "nodeo-unexpected-multiline": [0],
+    "unicode-bom": ["off"],
+    "unicorn/empty-brace-spaces": ["off"],
+    "unicorn/no-nested-ternary": ["off"],
+    "unicorn/number-literal-case": ["off"],
+    "nodeo-empty-function": ["off"],
+    "typescript/no-extra-non-null-assertion": ["error"],
+    "nodeo-loss-of-precision": ["error"],
+    "typescript/no-this-alias": ["error"],
+    "typescript/no-unnecessary-type-constraint": ["error"],
+    "typescript/prefer-as-const": ["error"],
+    "typescript/prefer-namespace-keyword": ["error"],
+    "nodeo-import-assign": ["off"],
+    "nodeo-setter-return": ["off"],
+    "prefer-spread": ["error"],
+    "default-param-last": ["error"]
+  },
+  "settings": {
+    "jsx-a11y": {
+      "polymorphicPropName": null,
+      "components": {}
+    },
+    "next": {
+      "rootDir": []
+    },
+    "react": {
+      "formComponents": [],
+      "linkComponents": []
+    },
+    "jsdoc": {
+      "ignorePrivate": false,
+      "ignoreInternal": false,
+      "ignoreReplacesDocs": true,
+      "overrideReplacesDocs": true,
+      "augmentsExtendsReplacesDocs": false,
+      "implementsReplacesDocs": false,
+      "exemptDestructuredRootsFromChecks": false,
+      "tagNamePreference": {}
+    }
+  },
+  "env": {
+    "builtin": true
+  },
+  "globals": {},
+  "ignorePatterns": []
+}

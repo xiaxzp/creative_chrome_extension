@@ -1,49 +1,30 @@
 {
+  "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
-    "incremental": false,
-    "target": "es2016",
-    "jsx": "preserve",
-    "lib": [
-      "WebWorker",
-      "DOM",
-      "ESNext"
-    ],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@imgs/*": [
-        "public/imgs/*"
-      ],
-      "@event_tracker/*": [
-        "src/applets/event_tracker/*"
-      ]
-    },
-    "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "element-plus/global",
-      "chrome-types",
-      "urlpattern-polyfill/dist",
-      "webpack-env",
-      "unplugin-vue-macros/macros-global",
-      "@vue-macros/reactivity-transform/macros-global"
-    ],
-    "strict": false,
-    "strictNullChecks": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
     "noImplicitAny": false,
+    "resolveJsonModule": true,
     "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "strict": false,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "incremental": false,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["chrome-types", "./node_modules/urlpattern-polyfill/dist"]
   },
-  "exclude": [
-    "dist",
-    "dist-user",
-    "node_modules"
-  ]
+  "ts-node": {
+    // It is faster to skip typechecking.
+    // Remove if you want ts-node to do typechecking.
+    "transpileOnly": true,
+    "files": true,
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "nodenext",
+      "target": "ESNext"
+    }
+  }
 }

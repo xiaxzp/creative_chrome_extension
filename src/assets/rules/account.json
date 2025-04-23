@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "url": "https://www.baidu.com"
+      }
+    },
+    "condition": {
+      "regexFilter": "(api|dev|www).tiktok.com/(passport/web/logout|logout)",
+      "resourceTypes": ["xmlhttprequest", "main_frame", "sub_frame"]
+    }
+  }
+]
