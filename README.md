@@ -1,3 +1,5 @@
+# wiki
+[*deepwiki*](https://deepwiki.com/xiaxzp/creative_chrome_extension/3-services)
 # WXT + React
 
 This template should help get you started developing with React in WXT.
