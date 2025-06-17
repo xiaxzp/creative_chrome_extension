@@ -50,7 +50,7 @@ export class MessageBase<T extends Record<string, any>> {
       sender?.tab?.id,
     );
   }
-  protected spreadMessage(stats?: T) {
+  protected spreadMessage(stats?: T, updateTab?: boolean) {
     // bg 广播
   }
   protected onChange(oldStats: T, sender?: Runtime.MessageSender) {
@@ -104,5 +104,5 @@ export class MessageBase<T extends Record<string, any>> {
     return sub.unsubscribe.bind(sub);
   }
   // 修改内容
-  public async manualChangeStats(data?: T) {}
+  public async manualChangeStats(data?: T, sender?: Runtime.MessageSender, updateTab?: boolean) {}
 }
