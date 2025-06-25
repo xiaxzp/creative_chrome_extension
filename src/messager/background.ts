@@ -69,7 +69,7 @@ export default class MessageCenterBackground<T extends Record<string, any>> exte
                 this.updatedTabIds.set(tab.id ?? -1, Date.now());
               }
             }).catch(e => {
-              if (updateTab && !this.updatedTabIds.has(tab.id ?? -1)) {
+              if ((currentTabs?.[0]?.id === tab.id || updateTab) && !this.updatedTabIds.has(tab.id ?? -1)) {
                 this.updatedTabIds.set(tab.id ?? -1, Date.now());
                 chrome.tabs.reload(tab.id);
               }
