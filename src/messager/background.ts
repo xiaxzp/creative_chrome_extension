@@ -75,7 +75,7 @@ export default class MessageCenterBackground<T extends Record<string, any>> exte
               }
               console.error('---debug--- send tab message error', e, tab, BuildTime)
             });;
-          } else if (tab.id && currentTabs?.[0]?.id === tab.id && updateTab && !this.updatedTabIds.has(tab.id ?? -1)) {
+          } else if (tab.id && (currentTabs?.[0]?.id === tab.id || updateTab) && !this.updatedTabIds.has(tab.id ?? -1)) {
             // console.log('---debug--- reload tab', JSON.stringify(tab))
             this.updatedTabIds.set(tab.id ?? -1, Date.now());
             chrome.tabs.reload(tab.id);
